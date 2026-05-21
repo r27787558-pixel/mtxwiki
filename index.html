@@ -18,12 +18,13 @@
             padding: 80px 8% 40px; /* 增加了顶部内边距，防止被固定导航栏遮挡 */
         }
 
-        /* 顶部导航栏包裹区 */
+        /* 顶部导航栏包裹区（修改了这里，解决滚动条带来的屏幕宽度挤压） */
         .header-nav {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;             /* 放弃 right: 0，改用 100% 宽度 */
+            box-sizing: border-box;  /* 确保 padding 不会把导航栏撑开变形 */
             background-color: rgba(255, 255, 255, 0.95);
             padding: 20px 8%;
             display: flex;
@@ -47,16 +48,20 @@
             gap: 20px;
         }
 
+        /* 导航链接文字（修改了这里，锁死了字重，增加 inline-block 稳定性） */
         .nav-links a {
             text-decoration: none;
             color: #555;
-            font-weight: 500;
+            font-weight: 500 !important; /* 强制锁定字粗，防止切换页面时意外加粗 */
             font-size: 1rem;
+            display: inline-block;       /* 给文字一个独立的显示块，更稳定 */
             transition: color 0.3s;
         }
 
+        /* 悬浮和激活样式（修改了这里，确保变色时绝对不会触发字重变化导致文字变宽） */
         .nav-links a:hover, .nav-links a.active {
-            color: #e67e22; /* 悬浮和激活时变成你主题的橙色 */
+            color: #e67e22; 
+            font-weight: 500 !important; /* 再次强制确保变色时字粗和刚才完全一样 */
         }
 
         .container {
@@ -87,6 +92,8 @@
             white-space: pre-line; /* 保留换行 */
             padding-left: 10px;
         }
+
+
 
         /* 强调文字（如QQ号） */
         .highlight {
