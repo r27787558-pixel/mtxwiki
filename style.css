@@ -1,103 +1,59 @@
-body, h1, p {
-    margin: 0;
-    padding: 0;
-}
+/* ==========================================================================
+   全局按钮与容器样式
+   ========================================================================== */
 
-body {
-    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    line-height: 1.8;
-    color: #2c3e50;
-    background-color: #ffffff;
-    padding: 80px 8% 40px;
-}
-
-/* 顶部导航栏包裹区 - 已修复晃动 */
-.header-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 20px 60px; /* 改为固定像素，彻底防抖 */
+/* 1. 全局按钮容器：任何需要并排排列按钮的地方都可以用这个类名 */
+.button-group {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+/* 2. 全局按钮基础样式：直接作用于所有 HTML 按钮和带有特定属性的链接 */
+button, 
+input[type="button"], 
+input[type="submit"],
+a.button-link {  /* 如果某些超链接也想长得像按钮，可以给它加这个类 */
+    
+    /* 统一布局与间距 */
+    display: inline-flex;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    z-index: 1000;
+    justify-content: center;
+    padding: 10px 20px;
+    
+    /* 边框与背景 */
+    background-color: #f0f2f5;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    
+    /* 文字样式 */
+    color: #303133;
+    font-size: 14px;
+    text-decoration: none; /* 取消 a 标签默认的下划线 */
+    
+    /* 交互手势 */
+    cursor: pointer;
+    user-select: none; /* 防止双击时文字被选中 */
+    
+    /* 动画过渡 */
+    transition: all 0.2s ease;
 }
 
-.top-right-brand {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #34495e;
-    letter-spacing: 1px;
-    text-decoration: none;
+/* 3. 全局鼠标悬停与聚焦状态 */
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+a.button-link:hover {
+    background-color: #e4e7ed;
+    border-color: #c0c4cc;
+    color: #409eff; /* 悬停时的品牌主色调 */
 }
 
-/* 导航链接样式 */
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #555;
-    font-weight: 500 !important;
-    font-size: 1rem;
-    display: inline-block;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #e67e22 !important;
-    font-weight: 500 !important;
-}
-
-.container {
-    max-width: 900px;
-    margin: 40px auto 0;
-}
-
-.section {
-    margin-bottom: 50px;
-}
-
-/* 大字体标题样式 */
-.big-title {
-    font-size: 2.8rem;
-    font-weight: 900;
-    margin-bottom: 25px;
-    color: #1a1a1a;
-    border-bottom: 4px solid #eee;
-    display: inline-block;
-    padding-bottom: 5px;
-}
-
-/* 斜体内容样式 */
-.content {
-    font-style: italic;
-    font-size: 1.15rem;
-    color: #555;
-    white-space: pre-line;
-    padding-left: 10px;
-}
-
-/* 强调文字 */
-.highlight {
-    font-style: normal;
-    font-weight: bold;
-    color: #e67e22;
-}
-
-@media (max-width: 600px) {
-    .header-nav {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 20px;
-    }
-    .big-title { font-size: 2rem; }
-    body { padding-top: 130px; }
-    .nav-links { gap: 12px; font-size: 0.9rem; }
+/* 4. 全局点击（激活）状态：增加点击反馈，体验更好 */
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+a.button-link:active {
+    background-color: #dcdfe6;
 }
