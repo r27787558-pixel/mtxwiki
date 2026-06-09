@@ -142,3 +142,22 @@ a.button-link:active,
     color: #475569;
     line-height: 1.65;
 }
+/* 强制清除全站所有超链接的下划线，并将文字颜色统一恢复为黑色 */
+a, 
+a:link, 
+a:visited, 
+a:hover, 
+a:active,
+.header-nav a,
+.nav-links a,
+.button-group a,
+.button-group a button {
+    text-decoration: none !important;
+    color: #000000 !important;
+}
+
+/* 保持导航栏激活项（当前页面）的字重，但颜色同样为黑 */
+.nav-links a.active {
+    font-weight: 600;
+}
+
