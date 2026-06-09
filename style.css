@@ -2,42 +2,37 @@
    全局按钮与容器样式
    ========================================================================== */
 
-/* 1. 全局按钮容器：任何需要并排排列按钮的地方都可以用这个类名 */
+/* 1. 全局按钮容器 */
 .button-group {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
-/* 2. 全局按钮基础样式：直接作用于所有 HTML 按钮和带有特定属性的链接 */
+/* 2. 全局按钮基础样式 */
 button, 
 input[type="button"], 
 input[type="submit"],
-a.button-link {  /* 如果某些超链接也想长得像按钮，可以给它加这个类 */
-    
-    /* 统一布局与间距 */
+a.button-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 11px 22px;
     
-    /* 边框与背景 */
-    background-color: #f0f2f5;
-    border: 1px solid #dcdfe6;
-    border-radius: 6px;
+    background-color: #f3f4f6;
+    border: 1px solid transparent;
+    border-radius: 12px;
     
-    /* 文字样式 */
-    color: #303133;
+    color: #4b5563;
     font-size: 14px;
-    text-decoration: none; /* 取消 a 标签默认的下划线 */
+    font-weight: 500;
+    text-decoration: none;
     
-    /* 交互手势 */
     cursor: pointer;
-    user-select: none; /* 防止双击时文字被选中 */
+    user-select: none;
     
-    /* 动画过渡 */
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 3. 全局鼠标悬停与聚焦状态 */
@@ -45,63 +40,86 @@ button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover,
 a.button-link:hover {
-    background-color: #e4e7ed;
-    border-color: #c0c4cc;
-    color: #409eff; /* 悬停时的品牌主色调 */
+    background-color: #ffffff;
+    border-color: #e5e7eb;
+    color: #111827;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
 }
+
+/* 4. 全局点击（激活）状态 */
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+a.button-link:active {
+    background-color: #f3f4f6;
+    border-color: transparent;
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   文章排版与组件样式
+   ========================================================================== */
+
 /* 文章内标题间距微调 */
 .content h2 {
-    font-size: 22px;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-top: 45px;
+    margin-bottom: 16px;
+    color: #1f2937;
 }
 
 .content h3 {
     font-size: 18px;
-    margin-top: 20px;
-    color: #34495e;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    color: #374151;
 }
 
 /* 表格全局样式 */
 .med-effect-table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 15px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 25px 0;
+    font-size: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .med-effect-table th, .med-effect-table td {
-    border: 1px solid #dcdfe6;
-    padding: 12px 15px;
+    padding: 14px 18px;
     text-align: left;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .med-effect-table th {
-    background-color: #f5f7fa;
-    color: #303133;
+    background-color: #f9fafb;
+    color: #4b5563;
     font-weight: 600;
 }
 
+.med-effect-table tr:last-child td {
+    border-bottom: none;
+}
+
 .med-effect-table tr:nth-child(even) {
-    background-color: #fafafa; /* 隔行变色 */
+    background-color: #f9fafb;
 }
 
 /* 结语引用块样式 */
 .info-quote {
-    margin: 30px 0;
-    padding: 15px 20px;
-    background-color: #ecf5ff;
-    border-left: 4px solid #409eff;
-    border-radius: 4px;
-    color: #303133;
-    line-height: 1.6;
-}
-
-/* 4. 全局点击（激活）状态：增加点击反馈，体验更好 */
-button:active,
-input[type="button"]:active,
-input[type="submit"]:active,
-a.button-link:active {
-    background-color: #dcdfe6;
+    margin: 35px 0;
+    padding: 18px 22px;
+    background-color: #f8fafc;
+    border-left: 4px solid #6366f1;
+    border-radius: 4px 12px 12px 4px;
+    color: #475569;
+    line-height: 1.65;
 }
